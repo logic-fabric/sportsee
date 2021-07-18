@@ -1,15 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import { Dashboard } from "./pages/Dashboard/Dashboard";
+import reportWebVitals from "./reportWebVitals";
+
+async function initApp() {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Dashboard />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+}
+
+initApp();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
