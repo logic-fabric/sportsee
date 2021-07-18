@@ -19,6 +19,8 @@ async function initApp() {
 
 const GlobalStyle = createGlobalStyle`
   html {
+    box-sizing: border-box;
+    
     color: ${styleVar.neutral900};
     font-family: Roboto, system-ui, Helvetica, sans-serif;
     font-weight: 500;
@@ -26,9 +28,27 @@ const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
 
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
   #root {
     max-width: 1440px;
     margin: auto;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  
+    margin: 0;
+    padding: 0;
+  
+    list-style-type: none;
   }
 `;
 

@@ -1,28 +1,60 @@
+import styled from "styled-components";
+
+import { styleVar } from "../../utils/styleVariables";
 import SportSeeLogo from "../../assets/logo.svg";
 
 export function Header() {
   return (
-    <header data-testid="header">
-      <a href="/">
+    <HeaderContainer data-testid="header">
+      <LogoLink href="/">
         <img src={SportSeeLogo} alt="SportSee" />
-      </a>
+      </LogoLink>
 
-      <nav>
-        <ul>
+      <HeaderNav>
+        <LinksList>
           <li>
-            <a href="/">Accueil</a>
+            <HeaderLink href="/">Accueil</HeaderLink>
           </li>
           <li>
-            <a href="/">Profil</a>
+            <HeaderLink href="/">Profil</HeaderLink>
           </li>
           <li>
-            <a href="/">Réglages</a>
+            <HeaderLink href="/">Réglages</HeaderLink>
           </li>
           <li>
-            <a href="/">Communauté</a>
+            <HeaderLink href="/">Communauté</HeaderLink>
           </li>
-        </ul>
-      </nav>
-    </header>
+        </LinksList>
+      </HeaderNav>
+    </HeaderContainer>
   );
 }
+
+const HeaderContainer = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  background: ${styleVar.neutral900};
+`;
+
+const LogoLink = styled.a`
+  padding: 1rem 2rem;
+`;
+
+const HeaderNav = styled.nav`
+  width: -webkit-fill-available;
+`;
+
+const LinksList = styled.ul`
+  justify-content: space-around;
+`;
+
+const HeaderLink = styled.a`
+  padding: 0.5rem 2rem;
+
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+`;
