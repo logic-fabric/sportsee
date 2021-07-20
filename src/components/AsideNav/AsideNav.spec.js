@@ -32,7 +32,7 @@ describe("GIVEN a user on a page with the vertical AsideNav", () => {
     const secondActivity = screen.getByAltText(/Natation/i);
     expect(secondActivity).toBeTruthy();
 
-    const thirdActivity = screen.getByAltText(/Vélo/i);
+    const thirdActivity = screen.getByAltText(/Cyclisme/i);
     expect(thirdActivity).toBeTruthy();
 
     const fourthActivity = screen.getByAltText(/Musculation/i);

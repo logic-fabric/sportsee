@@ -1,3 +1,8 @@
+import pictoBodybuilding from "../../assets/picto-bodybuilding.png";
+import pictoCycling from "../../assets/picto-cycling.png";
+import pictoMeditation from "../../assets/picto-meditation.png";
+import pictoSwimming from "../../assets/picto-swimming.png";
+
 export function AsideNav() {
   return (
     <div>
@@ -5,22 +10,22 @@ export function AsideNav() {
         <ul>
           <li>
             <a href="/">
-              <img src="" alt="Méditation" />
+              <img src={pictoMeditation} alt="Méditation" />
             </a>
           </li>
           <li>
             <a href="/">
-              <img src="" alt="Natation" />
+              <img src={pictoSwimming} alt="Natation" />
             </a>
           </li>
           <li>
             <a href="/">
-              <img src="" alt="Vélo" />
+              <img src={pictoCycling} alt="Cyclisme" />
             </a>
           </li>
           <li>
             <a href="/">
-              <img src="" alt="Musculation" />
+              <img src={pictoBodybuilding} alt="Musculation" />
             </a>
           </li>
         </ul>
