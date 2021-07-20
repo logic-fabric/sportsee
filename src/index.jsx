@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Header } from "./components/Header/Header";
 import { styleVar } from "./utils/styleVariables";
 import reportWebVitals from "./reportWebVitals";
 
@@ -11,6 +12,8 @@ async function initApp() {
     <React.StrictMode>
       <GlobalStyle />
 
+      <Header />
+      
       <Dashboard />
     </React.StrictMode>,
     document.getElementById("root")

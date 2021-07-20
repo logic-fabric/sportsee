@@ -10,7 +10,7 @@ export function Header() {
         <img src={SportSeeLogo} alt="SportSee" />
       </LogoLink>
 
-      <HeaderNav>
+      <nav>
         <LinksList>
           <li>
             <HeaderLink href="/">Accueil</HeaderLink>
@@ -25,15 +25,14 @@ export function Header() {
             <HeaderLink href="/">Communauté</HeaderLink>
           </li>
         </LinksList>
-      </HeaderNav>
+      </nav>
     </HeaderContainer>
   );
 }
 
 const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 16rem 1fr;
 
   color: white;
   background: ${styleVar.neutral900};
@@ -43,12 +42,13 @@ const LogoLink = styled.a`
   padding: 1rem 2rem;
 `;
 
-const HeaderNav = styled.nav`
-  width: -webkit-fill-available;
-`;
-
 const LinksList = styled.ul`
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  height: 100%;
+
+  text-align: center;
 `;
 
 const HeaderLink = styled.a`

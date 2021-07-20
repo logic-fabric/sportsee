@@ -1,6 +1,7 @@
+import styled from "styled-components";
+
 import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { BarChart } from "../../components/BarChart/BarChart";
-import { Header } from "../../components/Header/Header";
 import { Histogram } from "../../components/Histogram/Histogram";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { RadarChart } from "../../components/RadarChart/RadarChart";
@@ -8,9 +9,7 @@ import { RadialBarChart } from "../../components/RadialBarChart/RadialBarChart";
 
 export function Dashboard() {
   return (
-    <div>
-      <Header />
-
+    <DashboardContainer>
       <AsideNav />
 
       <section>
@@ -33,6 +32,11 @@ export function Dashboard() {
           </div>
         </div>
       </section>
-    </div>
+    </DashboardContainer>
   );
 }
+
+const DashboardContainer = styled.main`
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+`;
