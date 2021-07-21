@@ -1,10 +1,21 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter, Route } from "react-router-dom";
 
 import { Dashboard } from "./Dashboard";
 
-describe("GIVEN a connected user on Dashboard page", () => {
+function renderDashboard({ userId }) {
+  render(
+    <MemoryRouter initialEntries={[`/dashboard/${userId}`]}>
+      <Route path="/dashboard/:userId">
+        <Dashboard />
+      </Route>
+    </MemoryRouter>
+  );
+}
+
+describe("GIVEN a user on Dashboard page", () => {
   beforeEach(() => {
-    render(<Dashboard />);
+    renderDashboard(1);
   });
 
   test("THEN a Header is visible", () => {
