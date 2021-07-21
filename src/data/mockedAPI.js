@@ -19,10 +19,10 @@ export class MockedAPI {
     }
 
     return {
-      calorieCount: false,
-      proteinCount: false,
-      carbohydrateCount: false,
-      lipidCount: false,
+      calorieCount: null,
+      proteinCount: null,
+      carbohydrateCount: null,
+      lipidCount: null,
     };
   }
 }
