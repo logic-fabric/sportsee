@@ -1,3 +1,4 @@
+import { useParams } from "react-router";
 import styled from "styled-components";
 
 import { AsideNav } from "../../components/AsideNav/AsideNav";
@@ -10,6 +11,8 @@ import { RadialBarChart } from "../../components/RadialBarChart/RadialBarChart";
 import { styleVar } from "../../utils/styleVariables";
 
 export function Dashboard() {
+  const { userId } = useParams();
+
   return (
     <div>
       <Header />
@@ -19,7 +22,7 @@ export function Dashboard() {
 
         <MainContent>
           <MainTitle>
-            Bonjour <FirstName>Thomas</FirstName>
+            Bonjour <FirstName>{userId}</FirstName>
           </MainTitle>
           <Message>
             Félicitations ! Vous avez explosé vos objectifs hier !

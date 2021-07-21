@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
-
 import { styleVar } from "./utils/styleVariables";
 import reportWebVitals from "./reportWebVitals";
 
@@ -12,7 +12,11 @@ async function initApp() {
     <React.StrictMode>
       <GlobalStyle />
 
-      <Dashboard />
+      <Router>
+        <Route path="/dashboard/:userId">
+          <Dashboard />
+        </Route>
+      </Router>
     </React.StrictMode>,
     document.getElementById("root")
   );
