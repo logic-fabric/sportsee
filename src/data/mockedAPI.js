@@ -10,4 +10,19 @@ export class MockedAPI {
 
     return "unknown user";
   }
+
+  getUserKeyDataById(userId) {
+    for (let user of USER_MAIN_DATA) {
+      if (user.id === userId) {
+        return user.keyData;
+      }
+    }
+
+    return {
+      calorieCount: false,
+      proteinCount: false,
+      carbohydrateCount: false,
+      lipidCount: false,
+    };
+  }
 }

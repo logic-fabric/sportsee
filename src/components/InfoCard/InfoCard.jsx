@@ -1,7 +1,8 @@
-export function InfoCard() {
+export function InfoCard({ type, value }) {
   return (
     <div>
-      <p>[ InfoCard ]</p>
+      <p>{type}</p>
+      <p>{value}</p>
     </div>
   );
 }

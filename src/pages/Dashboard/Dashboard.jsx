@@ -16,8 +16,9 @@ export function Dashboard() {
 
   let { userId } = useParams();
   userId = parseInt(userId);
-  
+
   const userFirstName = api.getUserFirstNameById(userId);
+  const userKeyData = api.getUserKeyDataById(userId);
 
   return (
     <div>
@@ -48,13 +49,13 @@ export function Dashboard() {
             </ChartsGrid>
 
             <CardsGrid>
-              <InfoCard />
+              <InfoCard type="Calories" value={userKeyData.calorieCount} />
 
-              <InfoCard />
+              <InfoCard type="Protéines" value={userKeyData.proteinCount} />
 
-              <InfoCard />
+              <InfoCard type="Glucides" value={userKeyData.carbohydrateCount} />
 
-              <InfoCard />
+              <InfoCard type="Lipides" value={userKeyData.lipidCount} />
             </CardsGrid>
           </ContentGrid>
         </MainContent>
