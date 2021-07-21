@@ -119,10 +119,4 @@ const CardsGrid = styled.div`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   gap: 2rem;
-
-  > * {
-    padding: 2rem;
-    text-align: center;
-    background: ${styleVar.neutral100};
-  }
 `;

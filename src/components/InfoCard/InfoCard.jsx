@@ -1,4 +1,7 @@
+import styled from "styled-components";
+
 import { toFrenchIntegerFormat } from "../../utils/format";
+import { styleVar } from "../../utils/styleVariables";
 import calorieIcon from "../../assets/icon-calorie.png";
 import carbohydrateIcon from "../../assets/icon-carbohydrate.png";
 import lipidIcon from "../../assets/icon-lipid.png";
@@ -20,13 +23,45 @@ const UNIT_BY_TYPE = {
 
 export function InfoCard({ type, value }) {
   return (
-    <div>
-      <img src={ICON_BY_TYPE[type]} alt="" />
-      <p data-testid="card-measure">
-        {value ? `${toFrenchIntegerFormat(value)}${UNIT_BY_TYPE[type]}` : "-"}
-        
-      </p>
-      <p data-testid="card-type">{type}</p>
-    </div>
+    <InfoCardContainer>
+      <img src={ICON_BY_TYPE[type]} alt={type} width="60" height="60" />
+      <InfoCardData>
+        <InfoCardMeasure data-testid="card-measure">
+          {value ? `${toFrenchIntegerFormat(value)}${UNIT_BY_TYPE[type]}` : "-"}
+        </InfoCardMeasure>
+        <InfoCardType data-testid="card-type">{type}</InfoCardType>
+      </InfoCardData>
+    </InfoCardContainer>
   );
 }
+
+const InfoCardContainer = styled.div`
+  display: flex;
+
+  padding: 2rem;
+
+  text-align: left;
+
+  background: ${styleVar.neutral100};
+`;
+
+const InfoCardData = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0 0 0 1.5rem;
+`;
+
+const InfoCardMeasure = styled.div`
+  margin: 0.125rem 0;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+`;
+
+const InfoCardType = styled.div`
+  margin: 0.125rem 0;
+
+  color: ${styleVar.neutral500};
+`;
