@@ -8,10 +8,16 @@ import { Histogram } from "../../components/Histogram/Histogram";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { RadarChart } from "../../components/RadarChart/RadarChart";
 import { RadialBarChart } from "../../components/RadialBarChart/RadialBarChart";
+import { MockedAPI } from "../../data/mockedAPI";
 import { styleVar } from "../../utils/styleVariables";
 
 export function Dashboard() {
-  const { userId } = useParams();
+  const api = new MockedAPI();
+
+  let { userId } = useParams();
+  userId = parseInt(userId);
+  
+  const userFirstName = api.getUserFirstNameById(userId);
 
   return (
     <div>
@@ -22,7 +28,7 @@ export function Dashboard() {
 
         <MainContent>
           <MainTitle>
-            Bonjour <FirstName>{userId}</FirstName>
+            Bonjour <FirstName>{userFirstName}</FirstName>
           </MainTitle>
           <Message>
             Félicitations ! Vous avez explosé vos objectifs hier !
