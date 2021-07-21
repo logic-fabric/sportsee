@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { BarChart } from "../../components/BarChart/BarChart";
+import { Header } from "../../components/Header/Header";
 import { Histogram } from "../../components/Histogram/Histogram";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { RadarChart } from "../../components/RadarChart/RadarChart";
@@ -10,42 +11,46 @@ import { styleVar } from "../../utils/styleVariables";
 
 export function Dashboard() {
   return (
-    <DashboardContainer>
-      <AsideNav />
+    <div>
+      <Header />
 
-      <MainContent>
-        <MainTitle>
-          Bonjour <FirstName>Thomas</FirstName>
-        </MainTitle>
-        <Message>
-          Félicitations ! Vous avez explosé vos objectifs hier !
-        </Message>
+      <DashboardContainer>
+        <AsideNav />
 
-        <ContentGrid>
-          <ChartsGrid>
-            <MainChart>
-              <BarChart />
-            </MainChart>
+        <MainContent>
+          <MainTitle>
+            Bonjour <FirstName>Thomas</FirstName>
+          </MainTitle>
+          <Message>
+            Félicitations ! Vous avez explosé vos objectifs hier !
+          </Message>
 
-            <Histogram />
+          <ContentGrid>
+            <ChartsGrid>
+              <MainChart>
+                <BarChart />
+              </MainChart>
 
-            <RadarChart />
+              <Histogram />
 
-            <RadialBarChart />
-          </ChartsGrid>
+              <RadarChart />
 
-          <CardsGrid>
-            <InfoCard />
+              <RadialBarChart />
+            </ChartsGrid>
 
-            <InfoCard />
+            <CardsGrid>
+              <InfoCard />
 
-            <InfoCard />
+              <InfoCard />
 
-            <InfoCard />
-          </CardsGrid>
-        </ContentGrid>
-      </MainContent>
-    </DashboardContainer>
+              <InfoCard />
+
+              <InfoCard />
+            </CardsGrid>
+          </ContentGrid>
+        </MainContent>
+      </DashboardContainer>
+    </div>
   );
 }
 
