@@ -18,6 +18,7 @@ export function Dashboard() {
   userId = parseInt(userId);
 
   const userFirstName = api.getFirstNameById(userId);
+  const userActivities = api.getActivitiesById(userId);
   const userTodayScore = api.getTodayScoreById(userId);
   const userKeyData = api.getKeyDataById(userId);
 
@@ -44,7 +45,7 @@ export function Dashboard() {
 
               <Histogram />
 
-              <ActivitiesChart />
+              <ActivitiesChart activities={userActivities} />
 
               <ScoreChart score={userTodayScore} />
             </ChartsGrid>
@@ -109,7 +110,6 @@ const ChartsGrid = styled.div`
     overflow: hidden;
 
     text-align: center;
-    background: ${styleVar.neutral100};
   }
 `;
 
