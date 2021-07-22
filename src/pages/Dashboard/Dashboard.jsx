@@ -7,7 +7,7 @@ import { Header } from "../../components/Header/Header";
 import { Histogram } from "../../components/Histogram/Histogram";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { RadarChart } from "../../components/RadarChart/RadarChart";
-import { RadialBarChart } from "../../components/RadialBarChart/RadialBarChart";
+import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
 import { MockedAPI } from "../../data/mockedAPI";
 import { styleVar } from "../../utils/styleVariables";
 
@@ -45,7 +45,7 @@ export function Dashboard() {
 
               <RadarChart />
 
-              <RadialBarChart />
+              <ScoreChart />
             </ChartsGrid>
 
             <CardsGrid>
@@ -105,7 +105,6 @@ const ChartsGrid = styled.div`
   gap: 2rem;
 
   > * {
-    padding: 2rem;
     text-align: center;
     background: ${styleVar.neutral100};
   }
