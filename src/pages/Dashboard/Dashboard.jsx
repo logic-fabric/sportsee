@@ -88,7 +88,6 @@ const Message = styled.p`
   margin: 2rem 0 4rem 0;
 
   font-size: 1.1rem;
-  font-weight: 400;
 `;
 
 const ContentGrid = styled.div`

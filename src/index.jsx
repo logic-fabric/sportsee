@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
     
     color: ${styleVar.neutral900};
     font-family: Roboto, system-ui, Helvetica, sans-serif;
-    font-weight: 500;
+    font-weight: 400;
 
     scroll-behavior: smooth;
   }
