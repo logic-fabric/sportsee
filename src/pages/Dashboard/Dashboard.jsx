@@ -1,12 +1,12 @@
 import { useParams } from "react-router";
 import styled from "styled-components";
 
+import { ActivitiesChart } from "../../components/ActivitiesChart/ActivitiesChart";
 import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { BarChart } from "../../components/BarChart/BarChart";
 import { Header } from "../../components/Header/Header";
 import { Histogram } from "../../components/Histogram/Histogram";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
-import { RadarChart } from "../../components/RadarChart/RadarChart";
 import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
 import { MockedAPI } from "../../data/mockedAPI";
 import { styleVar } from "../../utils/styleVariables";
@@ -44,7 +44,7 @@ export function Dashboard() {
 
               <Histogram />
 
-              <RadarChart />
+              <ActivitiesChart />
 
               <ScoreChart score={userTodayScore} />
             </ChartsGrid>
@@ -105,6 +105,9 @@ const ChartsGrid = styled.div`
   gap: 2rem;
 
   > * {
+    border-radius: 0.25rem;
+    overflow: hidden;
+
     text-align: center;
     background: ${styleVar.neutral100};
   }
@@ -118,4 +121,9 @@ const CardsGrid = styled.div`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   gap: 2rem;
+
+  > * {
+    border-radius: 0.25rem;
+    overflow: hidden;
+  }
 `;

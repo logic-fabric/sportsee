@@ -47,7 +47,6 @@ export function ScoreChart({ score }) {
 
 const ScoreChartContainer = styled.div`
   position: relative;
-
   display: flex;
   justify-content: center;
   align-items: center;
