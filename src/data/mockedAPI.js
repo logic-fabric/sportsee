@@ -1,7 +1,7 @@
 import { USER_MAIN_DATA } from "./mockedData";
 
 export class MockedAPI {
-  getUserFirstNameById(userId) {
+  getFirstNameById(userId) {
     for (let user of USER_MAIN_DATA) {
       if (user.id === userId) {
         return user.userInfos.firstName;
@@ -11,7 +11,7 @@ export class MockedAPI {
     return "unknown user";
   }
 
-  getUserKeyDataById(userId) {
+  getKeyDataById(userId) {
     for (let user of USER_MAIN_DATA) {
       if (user.id === userId) {
         return user.keyData;
@@ -24,5 +24,15 @@ export class MockedAPI {
       carbohydrateCount: null,
       lipidCount: null,
     };
+  }
+
+  getTodayScoreById(userId) {
+    for (let user of USER_MAIN_DATA) {
+      if (user.id === userId) {
+        return user.todayScore;
+      }
+    }
+
+    return 0;
   }
 }

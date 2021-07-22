@@ -17,8 +17,9 @@ export function Dashboard() {
   let { userId } = useParams();
   userId = parseInt(userId);
 
-  const userFirstName = api.getUserFirstNameById(userId);
-  const userKeyData = api.getUserKeyDataById(userId);
+  const userFirstName = api.getFirstNameById(userId);
+  const userTodayScore = api.getTodayScoreById(userId);
+  const userKeyData = api.getKeyDataById(userId);
 
   return (
     <div>
@@ -45,7 +46,7 @@ export function Dashboard() {
 
               <RadarChart />
 
-              <ScoreChart />
+              <ScoreChart score={userTodayScore} />
             </ChartsGrid>
 
             <CardsGrid>

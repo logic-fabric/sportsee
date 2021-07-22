@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 import { styleVar } from "../../utils/styleVariables";
 
-export function ScoreChart() {
-  const score = 0.65;
+export function ScoreChart({ score }) {
   const data = [
     { name: "completed", value: score, fillColor: `${styleVar.primary500}` },
     { name: "not-completed", value: 1 - score, fillColor: "transparent" },
