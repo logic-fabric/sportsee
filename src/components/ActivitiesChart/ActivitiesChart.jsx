@@ -35,11 +35,12 @@ export function ActivitiesChart({ activities }) {
   return (
     <ActivitiesChartContainer>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={orderedActivities} outerRadius="75%">
-          <PolarGrid />
+        <RadarChart data={orderedActivities} outerRadius="70%">
+          <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="activity"
             stroke="white"
+            dy={4}
             tickLine={false}
             tick={{
               fontSize: 12,
