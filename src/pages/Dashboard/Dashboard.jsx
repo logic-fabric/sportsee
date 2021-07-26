@@ -17,10 +17,11 @@ export function Dashboard() {
   let { userId } = useParams();
   userId = parseInt(userId);
 
-  const userFirstName = api.getFirstNameById(userId);
   const userActivities = api.getActivitiesById(userId);
-  const userTodayScore = api.getTodayScoreById(userId);
+  const userAverageSessions = api.getAverageSessionsById(userId);
+  const userFirstName = api.getFirstNameById(userId);
   const userKeyData = api.getKeyDataById(userId);
+  const userTodayScore = api.getTodayScoreById(userId);
 
   return (
     <div>
@@ -43,7 +44,7 @@ export function Dashboard() {
                 <BarChart />
               </MainChart>
 
-              <AverageSessionsChart />
+              <AverageSessionsChart averageSessions={userAverageSessions} />
 
               <ActivitiesChart activities={userActivities} />
 

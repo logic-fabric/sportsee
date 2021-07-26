@@ -3,38 +3,7 @@ import styled from "styled-components";
 
 import { styleVar } from "../../utils/styleVariables";
 
-export function AverageSessionsChart() {
-  const data = [
-    {
-      day: "L",
-      sessionLength: 30,
-    },
-    {
-      day: "M",
-      sessionLength: 23,
-    },
-    {
-      day: "M",
-      sessionLength: 45,
-    },
-    {
-      day: "J",
-      sessionLength: 50,
-    },
-    {
-      day: "V",
-      sessionLength: 0,
-    },
-    {
-      day: "S",
-      sessionLength: 0,
-    },
-    {
-      day: "D",
-      sessionLength: 60,
-    },
-  ];
-
+export function AverageSessionsChart({ averageSessions }) {
   return (
     <AverageSessionsChartContainer>
       <AverageSessionsChartTitle>
@@ -45,9 +14,9 @@ export function AverageSessionsChart() {
 
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={data}
+          data={averageSessions}
           outerRadius="75%"
-          margin={{ top: 80, right: 10, bottom: 20, left: 10 }}
+          margin={{ top: 80, right: 12, bottom: 24, left: 12 }}
         >
           <XAxis
             dataKey="day"
@@ -111,7 +80,7 @@ const AverageSessionsChartTitle = styled.h2`
   font-weight: 500;
 `;
 
-const TooltipContainer = styled.div`
+const TooltipContainer = styled.p`
   padding: 0.5rem;
 
   font-size: 0.7rem;

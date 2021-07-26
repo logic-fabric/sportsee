@@ -1,4 +1,8 @@
-import { USER_MAIN_DATA, USER_PERFORMANCE } from "./mockedData";
+import {
+  USER_AVERAGE_SESSIONS,
+  USER_MAIN_DATA,
+  USER_PERFORMANCE,
+} from "./mockedData";
 
 const ACTIVITY_BY_KIND = {
   1: "Cardio",
@@ -34,6 +38,50 @@ export class MockedAPI {
     }
 
     return activities;
+  }
+
+  getAverageSessionsById(userId) {
+    const averageSessions = [
+      {
+        day: "L",
+        sessionLength: 0,
+      },
+      {
+        day: "M",
+        sessionLength: 0,
+      },
+      {
+        day: "M",
+        sessionLength: 0,
+      },
+      {
+        day: "J",
+        sessionLength: 0,
+      },
+      {
+        day: "V",
+        sessionLength: 0,
+      },
+      {
+        day: "S",
+        sessionLength: 0,
+      },
+      {
+        day: "D",
+        sessionLength: 0,
+      },
+    ];
+
+    for (let user of USER_AVERAGE_SESSIONS) {
+      if (user.userId === userId) {
+        for (let index in user.sessions) {
+          averageSessions[index].sessionLength =
+            user.sessions[index].sessionLength;
+        }
+      }
+    }
+
+    return averageSessions;
   }
 
   getFirstNameById(userId) {
