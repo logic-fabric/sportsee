@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { ActivitiesChart } from "../../components/ActivitiesChart/ActivitiesChart";
 import { AsideNav } from "../../components/AsideNav/AsideNav";
+import { AverageSessionsChart } from "../../components/AverageSessionsChart/AverageSessionsChart";
 import { BarChart } from "../../components/BarChart/BarChart";
 import { Header } from "../../components/Header/Header";
-import { Histogram } from "../../components/Histogram/Histogram";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
 import { MockedAPI } from "../../data/mockedAPI";
@@ -43,7 +43,7 @@ export function Dashboard() {
                 <BarChart />
               </MainChart>
 
-              <Histogram />
+              <AverageSessionsChart />
 
               <ActivitiesChart activities={userActivities} />
 
