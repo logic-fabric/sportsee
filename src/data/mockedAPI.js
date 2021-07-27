@@ -1,4 +1,5 @@
 import {
+  USER_ACTIVITY,
   USER_AVERAGE_SESSIONS,
   USER_MAIN_DATA,
   USER_PERFORMANCE,
@@ -82,6 +83,42 @@ export class MockedAPI {
     }
 
     return averageSessions;
+  }
+
+  getDailyActivityById(userId) {
+    const dailyActivity = [];
+
+    for (let user of USER_ACTIVITY) {
+      if (user.userId === userId) {
+        for (let item of user.sessions) {
+          // eslint-disable-next-line no-unused-vars
+          const [yyyy, mm, dd] = item.day.split("-");
+
+          dailyActivity.push({
+            day: `${dd}/${mm}`,
+            kilogram: item.kilogram,
+            calories: item.calories,
+          });
+        }
+
+        return dailyActivity;
+      }
+    }
+
+    let date = new Date(Date.now());
+
+    // eslint-disable-next-line no-unused-vars
+    for (let _ of "1234567") {
+      let dateFr = new Intl.DateTimeFormat("fr").format(date);
+
+      dailyActivity.push({
+        day: dateFr.slice(0, 5),
+      });
+
+      date.setDate(date.getDate() - 1);
+    }
+
+    return dailyActivity.reverse();
   }
 
   getFirstNameById(userId) {

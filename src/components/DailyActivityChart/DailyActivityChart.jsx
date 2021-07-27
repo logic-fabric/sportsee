@@ -10,45 +10,7 @@ import styled from "styled-components";
 
 import { styleVar } from "../../utils/styleVariables";
 
-export function DailyActivityChart() {
-  const dailyActivity = [
-    {
-      day: "01/07",
-      kilogram: 80,
-      calories: 240,
-    },
-    {
-      day: "02/07",
-      kilogram: 80,
-      calories: 220,
-    },
-    {
-      day: "03/07",
-      kilogram: 81,
-      calories: 280,
-    },
-    {
-      day: "04/07",
-      kilogram: 81,
-      calories: 290,
-    },
-    {
-      day: "05/07",
-      kilogram: 80,
-      calories: 160,
-    },
-    {
-      day: "06/07",
-      kilogram: 78,
-      calories: 162,
-    },
-    {
-      day: "07/07",
-      kilogram: 76,
-      calories: 390,
-    },
-  ];
-
+export function DailyActivityChart({ dailyActivity }) {
   return (
     <DailyActivityChartContainer>
       <DailyActivityChartTitle>Activité quotidienne</DailyActivityChartTitle>
@@ -88,6 +50,7 @@ export function DailyActivityChart() {
             yAxisId="kg"
             dataKey="kilogram"
             domain={["dataMin - 1", "dataMax + 1"]}
+            allowDecimals={false}
             dx={24}
             orientation="right"
             stroke={`${styleVar.neutral400}`}

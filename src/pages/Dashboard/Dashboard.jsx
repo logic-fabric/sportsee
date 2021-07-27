@@ -19,6 +19,7 @@ export function Dashboard() {
 
   const userActivities = api.getActivitiesById(userId);
   const userAverageSessions = api.getAverageSessionsById(userId);
+  const userDailyActivity = api.getDailyActivityById(userId);
   const userFirstName = api.getFirstNameById(userId);
   const userKeyData = api.getKeyDataById(userId);
   const userTodayScore = api.getTodayScoreById(userId);
@@ -41,7 +42,7 @@ export function Dashboard() {
           <ContentGrid>
             <ChartsGrid>
               <MainChart>
-                <DailyActivityChart />
+                <DailyActivityChart dailyActivity={userDailyActivity} />
               </MainChart>
 
               <AverageSessionsChart averageSessions={userAverageSessions} />
