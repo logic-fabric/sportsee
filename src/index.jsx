@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
@@ -13,6 +13,9 @@ async function initApp() {
       <GlobalStyle />
 
       <Router>
+        <Route exact path="/">
+          <Redirect to="/dashboard/12" />
+        </Route>
         <Route path="/dashboard/:userId">
           <Dashboard />
         </Route>
