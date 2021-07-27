@@ -71,7 +71,7 @@ const AverageSessionsChartContainer = styled.div`
 const AverageSessionsChartTitle = styled.h2`
   position: absolute;
   top: 1.5rem;
-  left: 1.5rem;
+  left: 2rem;
 
   margin: 0;
 

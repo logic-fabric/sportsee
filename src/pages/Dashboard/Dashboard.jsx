@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ActivitiesChart } from "../../components/ActivitiesChart/ActivitiesChart";
 import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { AverageSessionsChart } from "../../components/AverageSessionsChart/AverageSessionsChart";
-import { BarChart } from "../../components/BarChart/BarChart";
+import { DailyActivityChart } from "../../components/DailyActivityChart/DailyActivityChart";
 import { Header } from "../../components/Header/Header";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
@@ -41,7 +41,7 @@ export function Dashboard() {
           <ContentGrid>
             <ChartsGrid>
               <MainChart>
-                <BarChart />
+                <DailyActivityChart />
               </MainChart>
 
               <AverageSessionsChart averageSessions={userAverageSessions} />
