@@ -3,6 +3,7 @@ import {
   BarChart,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
@@ -29,7 +30,7 @@ export function DailyActivityChart({ dailyActivity }) {
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={dailyActivity}
-          margin={{ top: 100, right: 24, bottom: 30, left: 48 }}
+          margin={{ top: 80, right: 48, bottom: 32, left: 48 }}
           barGap={8}
           barCategoryGap="35%"
         >
@@ -49,9 +50,9 @@ export function DailyActivityChart({ dailyActivity }) {
           <YAxis
             yAxisId="kg"
             dataKey="kilogram"
-            domain={["dataMin - 1", "dataMax + 1"]}
+            domain={["dataMin - 1", "dataMax + 2"]}
             allowDecimals={false}
-            dx={24}
+            dx={48}
             orientation="right"
             stroke={`${styleVar.neutral400}`}
             axisLine={false}
@@ -60,7 +61,7 @@ export function DailyActivityChart({ dailyActivity }) {
           <YAxis
             yAxisId="cal"
             dataKey="calories"
-            domain={[0, "dataMax + 10"]}
+            domain={[0, "dataMax + 50"]}
             hide={true}
           />
           <Bar
@@ -77,10 +78,37 @@ export function DailyActivityChart({ dailyActivity }) {
             fill={`${styleVar.primary500}`}
             radius={[50, 50, 0, 0]}
           />
+          <Tooltip
+            content={<CustomTooltip />}
+            cursor={{
+              fill: "rgba(0, 0, 0, 0.1)",
+            }}
+          />
         </BarChart>
       </ResponsiveContainer>
     </DailyActivityChartContainer>
   );
+}
+
+function CustomTooltip({ active, payload }) {
+  if (active && payload) {
+    return (
+      <div>
+        <TooltipLine
+          background={`${styleVar.neutral800}`}
+        >
+          {`${payload[0].value} kg`}
+        </TooltipLine>
+        <TooltipLine
+          background={`${styleVar.primary500}`}
+        >
+          {`${payload[1].value} kCal`}
+        </TooltipLine>
+      </div>
+    );
+  }
+
+  return null;
 }
 
 const DailyActivityChartContainer = styled.div`
@@ -122,6 +150,17 @@ const ColorBullet = styled.span`
   height: 0.5rem;
   margin: 0 0.5rem 0 0;
   border-radius: 50%;
+
+  background: ${(props) => props.background};
+`;
+
+const TooltipLine = styled.p`
+  padding: 0.75rem;
+  margin: 0;
+
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 500;
 
   background: ${(props) => props.background};
 `;
