@@ -1,4 +1,11 @@
-import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
+import {
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import styled from "styled-components";
 
 import { styleVar } from "../../utils/styleVariables";
@@ -16,7 +23,7 @@ export function AverageSessionsChart({ averageSessions }) {
         <LineChart
           data={averageSessions}
           outerRadius="75%"
-          margin={{ top: 80, right: 12, bottom: 24, left: 12 }}
+          margin={{ top: 0, right: 12, bottom: 24, left: 12 }}
         >
           <XAxis
             dataKey="day"
@@ -28,6 +35,11 @@ export function AverageSessionsChart({ averageSessions }) {
               fontSize: 12,
               fontWeight: 500,
             }}
+          />
+          <YAxis
+            dataKey="sessionLength"
+            domain={[0, "dataMax + 60"]}
+            hide={true}
           />
           <Line
             dataKey="sessionLength"
