@@ -93,7 +93,7 @@ export function DailyActivityChart({ dailyActivity }) {
 function CustomTooltip({ active, payload }) {
   if (active && payload) {
     return (
-      <div>
+      <TooltipContainer>
         <TooltipLine
           background={`${styleVar.neutral800}`}
         >
@@ -104,7 +104,7 @@ function CustomTooltip({ active, payload }) {
         >
           {`${payload[1].value} kCal`}
         </TooltipLine>
-      </div>
+      </TooltipContainer>
     );
   }
 
@@ -153,6 +153,10 @@ const ColorBullet = styled.span`
 
   background: ${(props) => props.background};
 `;
+
+const TooltipContainer = styled.div`
+  border: 2px solid rgba(255, 255, 255, 0.3);
+`
 
 const TooltipLine = styled.p`
   padding: 0.75rem;
