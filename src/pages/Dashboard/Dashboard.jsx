@@ -45,7 +45,10 @@ export function Dashboard() {
                 <DailyActivityChart dailyActivity={userDailyActivity} />
               </MainChart>
 
-              <AverageSessionsChart averageSessions={userAverageSessions} />
+              <AverageSessionsChart
+                averageSessions={userAverageSessions}
+                userId={userId}
+              />
 
               <ActivitiesChart activities={userActivities} />
 

@@ -10,7 +10,7 @@ import styled from "styled-components";
 
 import { styleVar } from "../../utils/styleVariables";
 
-export function AverageSessionsChart({ averageSessions }) {
+export function AverageSessionsChart({ averageSessions, userId }) {
   return (
     <AverageSessionsChartContainer>
       <AverageSessionsChartTitle>
@@ -43,7 +43,7 @@ export function AverageSessionsChart({ averageSessions }) {
           />
           <Line
             dataKey="sessionLength"
-            type="monotone"
+            type={`${userId === 18 ? "step" : "monotone"}`}
             stroke="rgba(255, 255, 255, 0.6)"
             strokeWidth={2}
             dot={false}
