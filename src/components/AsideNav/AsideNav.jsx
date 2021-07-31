@@ -46,6 +46,10 @@ const AsideNavContainer = styled.div`
   color: white;
 
   background: ${styleVar.neutral900};
+
+  @media (max-width: 1340px) {
+    max-height: 692px;
+  }
 `;
 
 const ActivitiesList = styled.ul`
@@ -61,11 +65,17 @@ const ActivityPicto = styled.img`
 `;
 
 const Disclaimer = styled.p`
-  writing-mode: vertical-lr;
+  display: flex;
+  align-items: center;
 
-  padding: 3rem 2.5rem;
+  padding: 3rem 0;
 
   font-size: 0.8rem;
+  writing-mode: vertical-lr;
 
   transform: rotate(180deg);
+
+  @media (max-width: 1340px) {
+    padding: 2rem;
+  }
 `;

@@ -45,6 +45,12 @@ const GlobalStyle = createGlobalStyle`
   #root {
     max-width: 1440px;
     margin: auto;
+    overflow: hidden;
+
+    @media (max-width: 1340px) {
+      max-width: 1024px;
+      max-height: 780px;
+    }
   }
 
   ul {

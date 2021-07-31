@@ -78,6 +78,10 @@ const DashboardContainer = styled.main`
 
 const MainContent = styled.section`
   padding: 3rem 5rem;
+
+  @media (max-width: 1340px) {
+    padding: 1.5rem 2rem;
+  }
 `;
 
 const MainTitle = styled.h1`
@@ -85,6 +89,10 @@ const MainTitle = styled.h1`
 
   font-size: 3rem;
   font-weight: 500;
+
+  @media (max-width: 1340px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const FirstName = styled.span`
@@ -95,12 +103,22 @@ const Message = styled.p`
   margin: 2rem 0 4rem 0;
 
   font-size: 1.1rem;
+
+  @media (max-width: 1340px) {
+    margin: 0.5rem 0 2rem 0;
+
+    font-size: 1.05rem;
+  }
 `;
 
 const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+
+  @media (max-width: 1340px) {
+    gap: 1rem;
+  }
 `;
 
 const ChartsGrid = styled.div`
@@ -110,11 +128,14 @@ const ChartsGrid = styled.div`
   grid-template: 20rem 16rem / repeat(3, 1fr);
   gap: 2rem;
 
+  @media (max-width: 1340px) {
+    grid-template: 18rem 14rem / repeat(3, 1fr);
+    gap: 1rem;
+  }
+
   > * {
     border-radius: 0.25rem;
     overflow: hidden;
-
-    text-align: center;
   }
 `;
 
@@ -130,5 +151,9 @@ const CardsGrid = styled.div`
   > * {
     border-radius: 0.25rem;
     overflow: hidden;
+  }
+
+  @media (max-width: 1340px) {
+    gap: 1.25rem;
   }
 `;

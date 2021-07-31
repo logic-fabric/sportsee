@@ -40,6 +40,10 @@ const HeaderContainer = styled.header`
 
 const LogoLink = styled.a`
   padding: 1rem 2rem;
+
+  @media (max-width: 1340px) {
+    padding: 0.75rem 1.5rem;
+  }
 `;
 
 const LinksList = styled.ul`
@@ -58,4 +62,8 @@ const HeaderLink = styled.a`
   color: white;
   font-size: 1.5rem;
   text-decoration: none;
+
+  @media (max-width: 1340px) {
+    font-size: 1.25rem;
+  }
 `;

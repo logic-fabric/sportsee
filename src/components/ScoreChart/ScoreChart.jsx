@@ -63,15 +63,22 @@ const ScoreChartTitle = styled.h2`
 
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 1340px) {
+    top: 1rem;
+    left: 1rem;
+  }
 `;
 
 const ScoreLabel = styled.p`
   position: absolute;
 
   font-size: 1rem;
+  text-align: center;
 `;
 
 const ScoreValue = styled.span`
   font-size: 1.5rem;
   font-weight: 700;
+  text-align: center;
 `;

@@ -128,6 +128,11 @@ const DailyActivityChartTitle = styled.h2`
 
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 1340px) {
+    top: 1rem;
+    left: 1.5rem;
+  }
 `;
 
 const DailyActivityChartLegend = styled.div`
@@ -137,6 +142,11 @@ const DailyActivityChartLegend = styled.div`
   right: 2rem;
 
   color: ${styleVar.neutral500};
+
+  @media (max-width: 1340px) {
+    top: 1rem;
+    right: 1.5rem;
+  }
 `;
 
 const LegendDetail = styled.p`

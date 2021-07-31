@@ -25,10 +25,12 @@ export function InfoCard({ type, value }) {
   return (
     <InfoCardContainer>
       <img src={ICON_BY_TYPE[type]} alt={type} width="60" height="60" />
+
       <InfoCardData>
         <InfoCardMeasure data-testid="card-measure">
           {value ? `${toFrenchIntegerFormat(value)}${UNIT_BY_TYPE[type]}` : "-"}
         </InfoCardMeasure>
+
         <InfoCardType data-testid="card-type">{type}</InfoCardType>
       </InfoCardData>
     </InfoCardContainer>
@@ -43,6 +45,10 @@ const InfoCardContainer = styled.div`
   text-align: left;
 
   background: ${styleVar.neutral100};
+
+  @media (max-width: 1340px) {
+    padding: 1.75rem 1.25rem;
+  }
 `;
 
 const InfoCardData = styled.div`
@@ -51,6 +57,10 @@ const InfoCardData = styled.div`
   justify-content: center;
 
   padding: 0 0 0 1.5rem;
+
+  @media (max-width: 1340px) {
+    padding: 0 0 0 1rem;
+  }
 `;
 
 const InfoCardMeasure = styled.div`
@@ -58,6 +68,10 @@ const InfoCardMeasure = styled.div`
 
   font-size: 1.2rem;
   font-weight: 700;
+
+  @media (max-width: 1340px) {
+    font-size: 1.1rem;
+  }
 `;
 
 const InfoCardType = styled.div`

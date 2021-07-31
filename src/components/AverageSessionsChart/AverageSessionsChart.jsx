@@ -90,6 +90,11 @@ const AverageSessionsChartTitle = styled.h2`
   color: rgba(255, 255, 255, 0.6);
   font-size: 1rem;
   font-weight: 500;
+
+  @media (max-width: 1340px) {
+    top: 1rem;
+    left: 1.5rem;
+  }
 `;
 
 const TooltipContainer = styled.p`
