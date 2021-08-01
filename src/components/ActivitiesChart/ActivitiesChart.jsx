@@ -35,7 +35,10 @@ export function ActivitiesChart({ activities }) {
   return (
     <ActivitiesChartContainer>
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={orderedActivities} outerRadius="70%">
+        <RadarChart
+          data={orderedActivities}
+          outerRadius={window.innerWidth > 1340 ? "70%" : "60%"}
+        >
           <PolarGrid radialLines={false} />
           <PolarAngleAxis
             dataKey="activity"
