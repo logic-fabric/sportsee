@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import styled from "styled-components";
 
+import { MockedAPI } from "../../services/mockedAPI";
 import { ActivitiesChart } from "../../components/ActivitiesChart/ActivitiesChart";
 import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { AverageSessionsChart } from "../../components/AverageSessionsChart/AverageSessionsChart";
@@ -8,21 +9,22 @@ import { DailyActivityChart } from "../../components/DailyActivityChart/DailyAct
 import { Header } from "../../components/Header/Header";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
-import { MockedAPI } from "../../data/mockedAPI";
 import { styleVar } from "../../utils/styleVariables";
 
 export function Dashboard() {
-  const api = new MockedAPI();
+  
 
   let { userId } = useParams();
   userId = parseInt(userId);
 
-  const userActivities = api.getActivitiesById(userId);
-  const userAverageSessions = api.getAverageSessionsById(userId);
-  const userDailyActivity = api.getDailyActivityById(userId);
-  const userFirstName = api.getFirstNameById(userId);
-  const userKeyData = api.getKeyDataById(userId);
-  const userTodayScore = api.getTodayScoreById(userId);
+  const mockedApi = new MockedAPI();
+
+  const userActivities = mockedApi.getActivitiesById(userId);
+  const userAverageSessions = mockedApi.getAverageSessionsById(userId);
+  const userDailyActivity = mockedApi.getDailyActivityById(userId);
+  const userFirstName = mockedApi.getFirstNameById(userId);
+  const userKeyData = mockedApi.getKeyDataById(userId);
+  const userTodayScore = mockedApi.getTodayScoreById(userId);
 
   return (
     <div>

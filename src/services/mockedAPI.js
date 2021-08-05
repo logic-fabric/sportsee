@@ -3,18 +3,90 @@ import {
   USER_AVERAGE_SESSIONS,
   USER_MAIN_DATA,
   USER_PERFORMANCE,
-} from "./mockedData";
-
-const ACTIVITY_BY_KIND = {
-  1: "Cardio",
-  2: "Energie",
-  3: "Endurance",
-  4: "Force",
-  5: "Vitesse",
-  6: "Intensité",
-};
+} from "../data/mockedData";
+import { ACTIVITY_BY_KIND } from "./sportSeeAPI";
 
 export class MockedAPI {
+  get defaultActivities() {
+    const activities = [];
+
+    for (let key in ACTIVITY_BY_KIND) {
+      activities.push({
+        activity: ACTIVITY_BY_KIND[key],
+        value: 0,
+      });
+    }
+
+    return activities;
+  }
+
+  get defaultAverageSessions() {
+    const averageSessions = [
+      {
+        day: "L",
+        sessionLength: 0,
+      },
+      {
+        day: "M",
+        sessionLength: 0,
+      },
+      {
+        day: "M",
+        sessionLength: 0,
+      },
+      {
+        day: "J",
+        sessionLength: 0,
+      },
+      {
+        day: "V",
+        sessionLength: 0,
+      },
+      {
+        day: "S",
+        sessionLength: 0,
+      },
+      {
+        day: "D",
+        sessionLength: 0,
+      },
+    ];
+
+    return averageSessions;
+  }
+
+  get defaultDailyActivity() {
+    const dailyActivity = [];
+
+    let date = new Date(Date.now());
+
+    // eslint-disable-next-line no-unused-vars
+    for (let _ of "1234567") {
+      let dateFr = new Intl.DateTimeFormat("fr").format(date);
+
+      dailyActivity.push({
+        day: dateFr.slice(0, 5),
+        kilogram: 0,
+        calories: 0,
+      });
+
+      date.setDate(date.getDate() - 1);
+    }
+
+    dailyActivity.reverse();
+
+    return dailyActivity;
+  }
+
+  get defaultKeyData() {
+    return {
+      calorieCount: null,
+      proteinCount: null,
+      carbohydrateCount: null,
+      lipidCount: null,
+    };
+  }
+
   getActivitiesById(userId) {
     const activities = [];
 
@@ -31,14 +103,7 @@ export class MockedAPI {
       }
     }
 
-    for (let key in ACTIVITY_BY_KIND) {
-      activities.push({
-        activity: ACTIVITY_BY_KIND[key],
-        value: 0,
-      });
-    }
-
-    return activities;
+    return this.defaultActivities;
   }
 
   getAverageSessionsById(userId) {
@@ -105,20 +170,7 @@ export class MockedAPI {
       }
     }
 
-    let date = new Date(Date.now());
-
-    // eslint-disable-next-line no-unused-vars
-    for (let _ of "1234567") {
-      let dateFr = new Intl.DateTimeFormat("fr").format(date);
-
-      dailyActivity.push({
-        day: dateFr.slice(0, 5),
-      });
-
-      date.setDate(date.getDate() - 1);
-    }
-
-    return dailyActivity.reverse();
+    return this.defaultDailyActivity;
   }
 
   getFirstNameById(userId) {
@@ -128,7 +180,7 @@ export class MockedAPI {
       }
     }
 
-    return "unknown user";
+    return "Unknown User";
   }
 
   getKeyDataById(userId) {
@@ -138,12 +190,7 @@ export class MockedAPI {
       }
     }
 
-    return {
-      calorieCount: null,
-      proteinCount: null,
-      carbohydrateCount: null,
-      lipidCount: null,
-    };
+    return this.defaultKeyData;
   }
 
   getTodayScoreById(userId) {
