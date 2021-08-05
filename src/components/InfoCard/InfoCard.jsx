@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { toFrenchIntegerFormat } from "../../utils/format";
+import { toFrenchIntegerFormat } from "../../utils/str/format";
 import { styleVar } from "../../utils/styleVariables";
 import calorieIcon from "../../assets/icon-calorie.png";
 import carbohydrateIcon from "../../assets/icon-carbohydrate.png";
