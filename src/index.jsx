@@ -42,6 +42,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  body {
+    margin: 0;
+  }
+
   #root {
     max-width: 1440px;
     margin: auto;

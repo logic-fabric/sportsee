@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
 import styled from "styled-components";
 
-import { MockedAPI } from "../../services/mockedAPI";
 import { ActivitiesChart } from "../../components/ActivitiesChart/ActivitiesChart";
 import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { AverageSessionsChart } from "../../components/AverageSessionsChart/AverageSessionsChart";
@@ -9,20 +8,43 @@ import { DailyActivityChart } from "../../components/DailyActivityChart/DailyAct
 import { Header } from "../../components/Header/Header";
 import { InfoCard } from "../../components/InfoCard/InfoCard";
 import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
+
+import { MockedAPI } from "../../services/mockedAPI";
+import { useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
+
 import { styleVar } from "../../utils/styleVariables";
 
 export function Dashboard() {
-  
-
   let { userId } = useParams();
   userId = parseInt(userId);
 
   const mockedApi = new MockedAPI();
 
+  const { data, isLoading, error } = useSportSeeApi(
+    `user/${userId}`,
+    "firstName"
+  );
+
+  const userFirstName = data;
+
+  if (error) {
+    return (
+      <div>
+        <Header />
+
+        <DashboardContainer>
+          <AsideNav />
+
+          <MainContent></MainContent>
+        </DashboardContainer>
+      </div>
+    );
+  }
+
   const userActivities = mockedApi.getActivitiesById(userId);
   const userAverageSessions = mockedApi.getAverageSessionsById(userId);
   const userDailyActivity = mockedApi.getDailyActivityById(userId);
-  const userFirstName = mockedApi.getFirstNameById(userId);
+  //const userFirstName = mockedApi.getFirstNameById(userId);
   const userKeyData = mockedApi.getKeyDataById(userId);
   const userTodayScore = mockedApi.getTodayScoreById(userId);
 
@@ -35,7 +57,7 @@ export function Dashboard() {
 
         <MainContent>
           <MainTitle>
-            Bonjour <FirstName>{userFirstName}</FirstName>
+            Bonjour <FirstName>{!isLoading && userFirstName}</FirstName>
           </MainTitle>
           <Message>
             Félicitations ! Vous avez explosé vos objectifs hier !

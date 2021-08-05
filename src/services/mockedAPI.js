@@ -3,8 +3,16 @@ import {
   USER_AVERAGE_SESSIONS,
   USER_MAIN_DATA,
   USER_PERFORMANCE,
-} from "../data/mockedData";
-import { ACTIVITY_BY_KIND } from "./sportSeeAPI";
+} from "./mockedData";
+
+export const ACTIVITY_BY_KIND = {
+  1: "Cardio",
+  2: "Energie",
+  3: "Endurance",
+  4: "Force",
+  5: "Vitesse",
+  6: "Intensité",
+};
 
 export class MockedAPI {
   get defaultActivities() {
