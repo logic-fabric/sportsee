@@ -46,7 +46,7 @@ export function Dashboard() {
   //const userDailyActivity = mockedApi.getDailyActivityById(userId);
   //const userFirstName = mockedApi.getFirstNameById(userId);
   const userKeyData = mockedApi.getKeyDataById(userId);
-  const userTodayScore = mockedApi.getTodayScoreById(userId);
+  //const userTodayScore = mockedApi.getTodayScoreById(userId);
 
   return (
     <div>
@@ -75,7 +75,7 @@ export function Dashboard() {
 
               <ActivitiesChart userId={userId} />
 
-              <ScoreChart score={userTodayScore} />
+              <ScoreChart userId={userId} />
             </ChartsGrid>
 
             <CardsGrid>

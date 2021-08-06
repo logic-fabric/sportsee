@@ -29,7 +29,7 @@ export function useSportSeeApi(endpoint, service) {
         const data = await response.json();
         const extractedData = extractDataByService(data, service);
 
-        if (service === "daily-activity") {
+        if (service === "today-score") {
           console.log("PROMISE RESOLVED");
           console.log("rawData =", data);
           console.log("extractedData =", extractedData);
@@ -48,7 +48,7 @@ export function useSportSeeApi(endpoint, service) {
     fetchData();
   }, [endpoint, service]);
 
-  if (service === "daily-activity") {
+  if (service === "today-score") {
     console.log(`--- useSportSeeApi for ${endpoint} ---`);
     console.log("data =", data);
     console.log("isLoading =", isLoading);
@@ -65,12 +65,19 @@ function extractDataByService(data, service) {
         return data === "can not get user"
           ? "unknown user"
           : data.data.userInfos.firstName;
+
       case "activities":
         return getActivities(data.data.data);
+
       case "average-sessions":
         return getAverageSessions(data.data.sessions);
+
       case "daily-activity":
         return getDailyActivity(data.data);
+
+      case "today-score":
+        return data === "can not get user" ? 0 : data.data.todayScore;
+
       default:
         return "DEFAULT EXTRACTION";
     }
