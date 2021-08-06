@@ -4,7 +4,7 @@ import { InfoCard } from "./InfoCard";
 
 describe("GIVEN a user on a page with a CardInfo of type 'Calories'", () => {
   test("THEN 'Calories' and the value with the right unit are displayed", () => {
-    render(<InfoCard type="Calories" value="4242" />);
+    render(<InfoCard type="Calories" value={4242} />);
 
     const cardType = screen.getByTestId("card-type");
     const cardMeasure = screen.getByTestId("card-measure");
@@ -15,7 +15,7 @@ describe("GIVEN a user on a page with a CardInfo of type 'Calories'", () => {
 
   describe("WHEN the user id is unknown", () => {
     test("THEN 'Calories' and just a dash are displayed", () => {
-      render(<InfoCard type="Calories" value={null} />);
+      render(<InfoCard type="Calories" value={0} />);
 
       const cardType = screen.getByTestId("card-type");
       const cardMeasure = screen.getByTestId("card-measure");
@@ -28,7 +28,7 @@ describe("GIVEN a user on a page with a CardInfo of type 'Calories'", () => {
 
 describe("GIVEN a user on a page with a CardInfo of type 'Protéines'", () => {
   test("THEN 'Protéines' and the value with the right unit are displayed", () => {
-    render(<InfoCard type="Protéines" value="4242" />);
+    render(<InfoCard type="Protéines" value={4242} />);
 
     const cardType = screen.getByTestId("card-type");
     const cardMeasure = screen.getByTestId("card-measure");
