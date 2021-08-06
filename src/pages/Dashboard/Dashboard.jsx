@@ -6,10 +6,9 @@ import { AsideNav } from "../../components/AsideNav/AsideNav";
 import { AverageSessionsChart } from "../../components/AverageSessionsChart/AverageSessionsChart";
 import { DailyActivityChart } from "../../components/DailyActivityChart/DailyActivityChart";
 import { Header } from "../../components/Header/Header";
-import { InfoCard } from "../../components/InfoCard/InfoCard";
+import { InfoCardsGroup } from "../../components/InfoCardsGroup/InfoCardsGroup";
 import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
 
-import { MockedAPI } from "../../services/mockedAPI";
 import { useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
 
 import { styleVar } from "../../utils/styleVariables";
@@ -17,8 +16,6 @@ import { styleVar } from "../../utils/styleVariables";
 export function Dashboard() {
   let { userId } = useParams();
   userId = parseInt(userId);
-
-  const mockedApi = new MockedAPI();
 
   const { data, isLoading, error } = useSportSeeApi(
     `user/${userId}`,
@@ -40,13 +37,6 @@ export function Dashboard() {
       </div>
     );
   }
-
-  //const userActivities = mockedApi.getActivitiesById(userId);
-  //const userAverageSessions = mockedApi.getAverageSessionsById(userId);
-  //const userDailyActivity = mockedApi.getDailyActivityById(userId);
-  //const userFirstName = mockedApi.getFirstNameById(userId);
-  const userKeyData = mockedApi.getKeyDataById(userId);
-  //const userTodayScore = mockedApi.getTodayScoreById(userId);
 
   return (
     <div>
@@ -78,15 +68,7 @@ export function Dashboard() {
               <ScoreChart userId={userId} />
             </ChartsGrid>
 
-            <CardsGrid>
-              <InfoCard type="Calories" value={userKeyData.calorieCount} />
-
-              <InfoCard type="Protéines" value={userKeyData.proteinCount} />
-
-              <InfoCard type="Glucides" value={userKeyData.carbohydrateCount} />
-
-              <InfoCard type="Lipides" value={userKeyData.lipidCount} />
-            </CardsGrid>
+            <InfoCardsGroup userId={userId} />
           </ContentGrid>
         </MainContent>
       </DashboardContainer>
@@ -164,19 +146,4 @@ const ChartsGrid = styled.div`
 
 const MainChart = styled.div`
   grid-column: 1/4;
-`;
-
-const CardsGrid = styled.div`
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  gap: 2rem;
-
-  > * {
-    border-radius: 0.25rem;
-    overflow: hidden;
-  }
-
-  @media (max-width: 1340px) {
-    gap: 1.25rem;
-  }
 `;

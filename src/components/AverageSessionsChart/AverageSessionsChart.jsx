@@ -8,7 +8,10 @@ import {
 } from "recharts";
 import styled from "styled-components";
 
-import { getDefaultAverageSessions, useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
+import {
+  getDefaultAverageSessions,
+  useSportSeeApi,
+} from "../../services/hooks/useSportSeeAPI";
 
 import { styleVar } from "../../utils/styleVariables";
 

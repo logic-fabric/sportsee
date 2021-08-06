@@ -29,12 +29,6 @@ export function useSportSeeApi(endpoint, service) {
         const data = await response.json();
         const extractedData = extractDataByService(data, service);
 
-        if (service === "today-score") {
-          console.log("PROMISE RESOLVED");
-          console.log("rawData =", data);
-          console.log("extractedData =", extractedData);
-        }
-
         setData(extractedData);
       } catch (err) {
         console.error(`An error occured while fetching ${endpoint} : ${err}`);
@@ -47,13 +41,6 @@ export function useSportSeeApi(endpoint, service) {
 
     fetchData();
   }, [endpoint, service]);
-
-  if (service === "today-score") {
-    console.log(`--- useSportSeeApi for ${endpoint} ---`);
-    console.log("data =", data);
-    console.log("isLoading =", isLoading);
-    console.log("error =", error);
-  }
 
   return { data, isLoading, error };
 }
@@ -74,6 +61,11 @@ function extractDataByService(data, service) {
 
       case "daily-activity":
         return getDailyActivity(data.data);
+
+      case "key-data":
+        return data === "can not get user"
+          ? getDefaultKeyData()
+          : data.data.keyData;
 
       case "today-score":
         return data === "can not get user" ? 0 : data.data.todayScore;
@@ -203,4 +195,13 @@ function getDailyActivity(userData) {
   }
 
   return getDefaultDailyActivity();
+}
+
+export function getDefaultKeyData() {
+  return {
+    calorieCount: null,
+    proteinCount: null,
+    carbohydrateCount: null,
+    lipidCount: null,
+  };
 }
