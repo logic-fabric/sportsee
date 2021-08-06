@@ -5,7 +5,7 @@ import {
   USER_PERFORMANCE,
 } from "./mockedData";
 
-export const ACTIVITY_BY_KIND = {
+const ACTIVITY_BY_KIND = {
   1: "Cardio",
   2: "Energie",
   3: "Endurance",

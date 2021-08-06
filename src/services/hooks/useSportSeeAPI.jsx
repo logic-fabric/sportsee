@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const BASE_URL = "http://localhost:3000";
 
-export const ACTIVITY_BY_KIND = {
+const ACTIVITY_BY_KIND = {
   1: "Cardio",
   2: "Energie",
   3: "Endurance",
@@ -31,7 +31,7 @@ export function useSportSeeApi(endpoint, service) {
         console.log("PROMISE RESOLVED");
         console.log("rawData =", data);
 
-        const extractedData = extractDataForService(data, service);
+        const extractedData = extractDataByService(data, service);
 
         console.log("extractedData =", extractedData);
 
@@ -56,15 +56,49 @@ export function useSportSeeApi(endpoint, service) {
   return { data, isLoading, error };
 }
 
-function extractDataForService(data, service) {
+function extractDataByService(data, service) {
   if (data) {
     switch (service) {
       case "firstName":
-        return data.data.userInfos.firstName;
+        return data === "can not get user"
+          ? "unknown user"
+          : data.data.userInfos.firstName;
+      case "activities":
+        return getActivities(data.data.data);
       default:
         return;
     }
   }
 
   return null;
+}
+
+export function getDefaultActivities() {
+  const activities = [];
+
+  for (let key in ACTIVITY_BY_KIND) {
+    activities.push({
+      activity: ACTIVITY_BY_KIND[key],
+      value: 0,
+    });
+  }
+
+  return activities;
+}
+
+function getActivities(userData) {
+  const activities = [];
+
+  if (userData) {
+    for (let item of userData) {
+      activities.push({
+        activity: ACTIVITY_BY_KIND[item.kind],
+        value: item.value,
+      });
+    }
+
+    return activities;
+  }
+
+  return getDefaultActivities();
 }

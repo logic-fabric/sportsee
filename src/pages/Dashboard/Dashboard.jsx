@@ -41,7 +41,7 @@ export function Dashboard() {
     );
   }
 
-  const userActivities = mockedApi.getActivitiesById(userId);
+  //const userActivities = mockedApi.getActivitiesById(userId);
   const userAverageSessions = mockedApi.getAverageSessionsById(userId);
   const userDailyActivity = mockedApi.getDailyActivityById(userId);
   //const userFirstName = mockedApi.getFirstNameById(userId);
@@ -60,7 +60,9 @@ export function Dashboard() {
             Bonjour <FirstName>{!isLoading && userFirstName}</FirstName>
           </MainTitle>
           <Message>
-            Félicitations ! Vous avez explosé vos objectifs hier !
+            {isLoading || userFirstName === "unknown user"
+              ? ""
+              : "Félicitations ! Vous avez explosé vos objectifs hier !"}
           </Message>
 
           <ContentGrid>
@@ -74,7 +76,7 @@ export function Dashboard() {
                 userId={userId}
               />
 
-              <ActivitiesChart activities={userActivities} />
+              <ActivitiesChart userId={userId} />
 
               <ScoreChart score={userTodayScore} />
             </ChartsGrid>

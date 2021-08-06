@@ -7,9 +7,11 @@ import {
 } from "recharts";
 import styled from "styled-components";
 
+import { getDefaultActivities, useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
+
 import { styleVar } from "../../utils/styleVariables";
 
-const ACTIVITIES_ORDER_ON_CHART = [
+const ACTIVITIES_ORDER_IN_CHART = [
   "Intensité",
   "Vitesse",
   "Force",
@@ -18,10 +20,21 @@ const ACTIVITIES_ORDER_ON_CHART = [
   "Cardio",
 ];
 
-export function ActivitiesChart({ activities }) {
+export function ActivitiesChart({ userId }) {
+  const { data, isLoading, error } = useSportSeeApi(
+    `user/${userId}/performance`,
+    "activities"
+  );
+
+  let activities = data;
+
+  if (error || isLoading) {
+    activities = getDefaultActivities();
+  }
+
   const orderedActivities = [];
 
-  for (let activity of ACTIVITIES_ORDER_ON_CHART) {
+  for (let activity of ACTIVITIES_ORDER_IN_CHART) {
     for (let item of activities) {
       if (item.activity === activity) {
         orderedActivities.push({
