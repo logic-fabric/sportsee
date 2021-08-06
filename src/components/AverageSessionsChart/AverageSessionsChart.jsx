@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+import styled from "styled-components";
 import {
   Line,
   LineChart,
@@ -6,7 +8,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import styled from "styled-components";
 
 import {
   getDefaultAverageSessions,
@@ -59,7 +60,7 @@ export function AverageSessionsChart({ userId }) {
           />
           <Line
             dataKey="sessionLength"
-            type={`${userId === 18 ? "step" : "monotone"}`}
+            type={`${userId === "18" ? "step" : "monotone"}`}
             stroke="rgba(255, 255, 255, 0.6)"
             strokeWidth={2}
             dot={false}
@@ -82,6 +83,10 @@ export function AverageSessionsChart({ userId }) {
   );
 }
 
+AverageSessionsChart.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
+
 function CustomTooltip({ active, payload }) {
   if (active && payload) {
     return <TooltipContainer>{`${payload[0].value} min`}</TooltipContainer>;
@@ -89,6 +94,11 @@ function CustomTooltip({ active, payload }) {
 
   return null;
 }
+
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.array,
+};
 
 const AverageSessionsChartContainer = styled.div`
   position: relative;

@@ -199,9 +199,9 @@ function getDailyActivity(userData) {
 
 export function getDefaultKeyData() {
   return {
-    calorieCount: null,
-    proteinCount: null,
-    carbohydrateCount: null,
-    lipidCount: null,
+    calorieCount: 0,
+    proteinCount: 0,
+    carbohydrateCount: 0,
+    lipidCount: 0,
   };
 }

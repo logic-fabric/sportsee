@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+import styled from "styled-components";
 import {
   Bar,
   BarChart,
@@ -7,7 +9,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import styled from "styled-components";
 
 import {
   getDefaultDailyActivity,
@@ -106,6 +107,10 @@ export function DailyActivityChart({ userId }) {
   );
 }
 
+DailyActivityChart.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
+
 function CustomTooltip({ active, payload }) {
   if (active && payload) {
     return (
@@ -122,6 +127,11 @@ function CustomTooltip({ active, payload }) {
 
   return null;
 }
+
+CustomTooltip.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.array,
+};
 
 const DailyActivityChartContainer = styled.div`
   position: relative;

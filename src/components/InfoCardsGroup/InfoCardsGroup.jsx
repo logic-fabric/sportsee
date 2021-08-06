@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { InfoCard } from "../InfoCard/InfoCard";
@@ -31,6 +32,10 @@ export function InfoCardsGroup({ userId }) {
     </CardsGrid>
   );
 }
+
+InfoCardsGroup.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 
 const CardsGrid = styled.div`
   display: grid;

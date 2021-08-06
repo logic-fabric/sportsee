@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { toFrenchIntegerFormat } from "../../utils/str/format";
@@ -28,7 +29,9 @@ export function InfoCard({ type, value }) {
 
       <InfoCardData>
         <InfoCardMeasure data-testid="card-measure">
-          {value ? `${toFrenchIntegerFormat(value)}${UNIT_BY_TYPE[type]}` : "-"}
+          {value !== 0
+            ? `${toFrenchIntegerFormat(value)}${UNIT_BY_TYPE[type]}`
+            : "-"}
         </InfoCardMeasure>
 
         <InfoCardType data-testid="card-type">{type}</InfoCardType>
@@ -36,6 +39,11 @@ export function InfoCard({ type, value }) {
     </InfoCardContainer>
   );
 }
+
+InfoCard.propTypes = {
+  type: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+};
 
 const InfoCardContainer = styled.div`
   display: flex;

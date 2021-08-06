@@ -15,7 +15,6 @@ import { styleVar } from "../../utils/styleVariables";
 
 export function Dashboard() {
   let { userId } = useParams();
-  userId = parseInt(userId);
 
   const { data, isLoading, error } = useSportSeeApi(
     `user/${userId}`,

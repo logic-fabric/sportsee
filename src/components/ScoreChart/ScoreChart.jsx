@@ -1,5 +1,6 @@
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 import { useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
 
@@ -57,6 +58,10 @@ export function ScoreChart({ userId }) {
     </ScoreChartContainer>
   );
 }
+
+ScoreChart.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 
 const ScoreChartContainer = styled.div`
   position: relative;

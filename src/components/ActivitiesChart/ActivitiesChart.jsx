@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+import styled from "styled-components";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -5,9 +7,11 @@ import {
   RadarChart,
   ResponsiveContainer,
 } from "recharts";
-import styled from "styled-components";
 
-import { getDefaultActivities, useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
+import {
+  getDefaultActivities,
+  useSportSeeApi,
+} from "../../services/hooks/useSportSeeAPI";
 
 import { styleVar } from "../../utils/styleVariables";
 
@@ -74,6 +78,10 @@ export function ActivitiesChart({ userId }) {
     </ActivitiesChartContainer>
   );
 }
+
+ActivitiesChart.propTypes = {
+  userId: PropTypes.string.isRequired,
+};
 
 const ActivitiesChartContainer = styled.div`
   background: ${styleVar.neutral800};
