@@ -29,7 +29,7 @@ export function useSportSeeApi(endpoint, service) {
         const data = await response.json();
         const extractedData = extractDataByService(data, service);
 
-        if (service === "average-sessions") {
+        if (service === "daily-activity") {
           console.log("PROMISE RESOLVED");
           console.log("rawData =", data);
           console.log("extractedData =", extractedData);
@@ -48,7 +48,7 @@ export function useSportSeeApi(endpoint, service) {
     fetchData();
   }, [endpoint, service]);
 
-  if (service === "average-sessions") {
+  if (service === "daily-activity") {
     console.log(`--- useSportSeeApi for ${endpoint} ---`);
     console.log("data =", data);
     console.log("isLoading =", isLoading);
@@ -69,6 +69,8 @@ function extractDataByService(data, service) {
         return getActivities(data.data.data);
       case "average-sessions":
         return getAverageSessions(data.data.sessions);
+      case "daily-activity":
+        return getDailyActivity(data.data);
       default:
         return "DEFAULT EXTRACTION";
     }
@@ -146,9 +148,52 @@ function getAverageSessions(userData) {
   let averageSessions = getDefaultAverageSessions();
 
   for (let index in userData) {
-    averageSessions[index].sessionLength =
-      userData[index].sessionLength;
+    averageSessions[index].sessionLength = userData[index].sessionLength;
   }
 
   return averageSessions;
+}
+
+export function getDefaultDailyActivity() {
+  const dailyActivity = [];
+
+  let date = new Date(Date.now());
+
+  // eslint-disable-next-line no-unused-vars
+  for (let _ of "1234567") {
+    let dateFr = new Intl.DateTimeFormat("fr").format(date);
+
+    dailyActivity.push({
+      day: dateFr.slice(0, 5),
+      kilogram: 0,
+      calories: 0,
+    });
+
+    date.setDate(date.getDate() - 1);
+  }
+
+  dailyActivity.reverse();
+
+  return dailyActivity;
+}
+
+function getDailyActivity(userData) {
+  if (userData) {
+    const dailyActivity = [];
+
+    for (let item of userData.sessions) {
+      // eslint-disable-next-line no-unused-vars
+      const [yyyy, mm, dd] = item.day.split("-");
+
+      dailyActivity.push({
+        day: `${dd}/${mm}`,
+        kilogram: item.kilogram,
+        calories: item.calories,
+      });
+    }
+
+    return dailyActivity;
+  }
+
+  return getDefaultDailyActivity();
 }

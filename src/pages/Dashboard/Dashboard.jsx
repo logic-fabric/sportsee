@@ -43,7 +43,7 @@ export function Dashboard() {
 
   //const userActivities = mockedApi.getActivitiesById(userId);
   //const userAverageSessions = mockedApi.getAverageSessionsById(userId);
-  const userDailyActivity = mockedApi.getDailyActivityById(userId);
+  //const userDailyActivity = mockedApi.getDailyActivityById(userId);
   //const userFirstName = mockedApi.getFirstNameById(userId);
   const userKeyData = mockedApi.getKeyDataById(userId);
   const userTodayScore = mockedApi.getTodayScoreById(userId);
@@ -68,7 +68,7 @@ export function Dashboard() {
           <ContentGrid>
             <ChartsGrid>
               <MainChart>
-                <DailyActivityChart dailyActivity={userDailyActivity} />
+                <DailyActivityChart userId={userId} />
               </MainChart>
 
               <AverageSessionsChart userId={userId} />

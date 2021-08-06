@@ -9,9 +9,25 @@ import {
 } from "recharts";
 import styled from "styled-components";
 
+import {
+  getDefaultDailyActivity,
+  useSportSeeApi,
+} from "../../services/hooks/useSportSeeAPI";
+
 import { styleVar } from "../../utils/styleVariables";
 
-export function DailyActivityChart({ dailyActivity }) {
+export function DailyActivityChart({ userId }) {
+  const { data, isLoading, error } = useSportSeeApi(
+    `user/${userId}/activity`,
+    "daily-activity"
+  );
+
+  let dailyActivity = data;
+
+  if (error || isLoading) {
+    dailyActivity = getDefaultDailyActivity();
+  }
+
   return (
     <DailyActivityChartContainer>
       <DailyActivityChartTitle>Activité quotidienne</DailyActivityChartTitle>
@@ -94,14 +110,10 @@ function CustomTooltip({ active, payload }) {
   if (active && payload) {
     return (
       <TooltipContainer>
-        <TooltipLine
-          background={`${styleVar.neutral800}`}
-        >
+        <TooltipLine background={`${styleVar.neutral800}`}>
           {`${payload[0].value} kg`}
         </TooltipLine>
-        <TooltipLine
-          background={`${styleVar.primary500}`}
-        >
+        <TooltipLine background={`${styleVar.primary500}`}>
           {`${payload[1].value} kCal`}
         </TooltipLine>
       </TooltipContainer>
@@ -166,7 +178,7 @@ const ColorBullet = styled.span`
 
 const TooltipContainer = styled.div`
   border: 2px solid rgba(255, 255, 255, 0.3);
-`
+`;
 
 const TooltipLine = styled.p`
   padding: 0.75rem;
