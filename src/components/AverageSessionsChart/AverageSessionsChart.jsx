@@ -8,9 +8,22 @@ import {
 } from "recharts";
 import styled from "styled-components";
 
+import { getDefaultAverageSessions, useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
+
 import { styleVar } from "../../utils/styleVariables";
 
-export function AverageSessionsChart({ averageSessions, userId }) {
+export function AverageSessionsChart({ userId }) {
+  const { data, isLoading, error } = useSportSeeApi(
+    `user/${userId}/average-sessions`,
+    "average-sessions"
+  );
+
+  let averageSessions = data;
+
+  if (error || isLoading) {
+    averageSessions = getDefaultAverageSessions();
+  }
+
   return (
     <AverageSessionsChartContainer>
       <AverageSessionsChartTitle>

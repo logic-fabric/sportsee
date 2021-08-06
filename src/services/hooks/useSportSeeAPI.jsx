@@ -27,13 +27,13 @@ export function useSportSeeApi(endpoint, service) {
 
         const response = await fetch(url);
         const data = await response.json();
-
-        console.log("PROMISE RESOLVED");
-        console.log("rawData =", data);
-
         const extractedData = extractDataByService(data, service);
 
-        console.log("extractedData =", extractedData);
+        if (service === "average-sessions") {
+          console.log("PROMISE RESOLVED");
+          console.log("rawData =", data);
+          console.log("extractedData =", extractedData);
+        }
 
         setData(extractedData);
       } catch (err) {
@@ -48,10 +48,12 @@ export function useSportSeeApi(endpoint, service) {
     fetchData();
   }, [endpoint, service]);
 
-  console.log(`--- useSportSeeApi for ${endpoint} ---`);
-  console.log("data =", data);
-  console.log("isLoading =", isLoading);
-  console.log("error =", error);
+  if (service === "average-sessions") {
+    console.log(`--- useSportSeeApi for ${endpoint} ---`);
+    console.log("data =", data);
+    console.log("isLoading =", isLoading);
+    console.log("error =", error);
+  }
 
   return { data, isLoading, error };
 }
@@ -65,8 +67,10 @@ function extractDataByService(data, service) {
           : data.data.userInfos.firstName;
       case "activities":
         return getActivities(data.data.data);
+      case "average-sessions":
+        return getAverageSessions(data.data.sessions);
       default:
-        return;
+        return "DEFAULT EXTRACTION";
     }
   }
 
@@ -101,4 +105,50 @@ function getActivities(userData) {
   }
 
   return getDefaultActivities();
+}
+
+export function getDefaultAverageSessions() {
+  const averageSessions = [
+    {
+      day: "L",
+      sessionLength: 0,
+    },
+    {
+      day: "M",
+      sessionLength: 0,
+    },
+    {
+      day: "M",
+      sessionLength: 0,
+    },
+    {
+      day: "J",
+      sessionLength: 0,
+    },
+    {
+      day: "V",
+      sessionLength: 0,
+    },
+    {
+      day: "S",
+      sessionLength: 0,
+    },
+    {
+      day: "D",
+      sessionLength: 0,
+    },
+  ];
+
+  return averageSessions;
+}
+
+function getAverageSessions(userData) {
+  let averageSessions = getDefaultAverageSessions();
+
+  for (let index in userData) {
+    averageSessions[index].sessionLength =
+      userData[index].sessionLength;
+  }
+
+  return averageSessions;
 }
