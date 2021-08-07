@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { styleVar } from "../../utils/styleVariables";
+import { styleVar } from "../../utils/style/styleVariables";
 import pictoBodybuilding from "../../assets/picto-bodybuilding.png";
 import pictoCycling from "../../assets/picto-cycling.png";
 import pictoMeditation from "../../assets/picto-meditation.png";

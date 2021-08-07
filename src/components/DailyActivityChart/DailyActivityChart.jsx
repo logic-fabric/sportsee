@@ -15,7 +15,7 @@ import {
   useSportSeeApi,
 } from "../../services/hooks/useSportSeeAPI";
 
-import { styleVar } from "../../utils/styleVariables";
+import { styleVar } from "../../utils/style/styleVariables";
 
 export function DailyActivityChart({ userId }) {
   const { data, isLoading, error } = useSportSeeApi(

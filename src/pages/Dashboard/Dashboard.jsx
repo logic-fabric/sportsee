@@ -11,7 +11,7 @@ import { ScoreChart } from "../../components/ScoreChart/ScoreChart";
 
 import { useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
 
-import { styleVar } from "../../utils/styleVariables";
+import { styleVar } from "../../utils/style/styleVariables";
 
 export function Dashboard() {
   let { userId } = useParams();

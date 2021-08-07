@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
-import { styleVar } from "./utils/styleVariables";
+import { styleVar } from "./utils/style/styleVariables";
 import reportWebVitals from "./reportWebVitals";
 
 async function initApp() {

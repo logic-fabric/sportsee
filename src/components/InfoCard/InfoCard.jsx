@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import { toFrenchIntegerFormat } from "../../utils/str/format";
-import { styleVar } from "../../utils/styleVariables";
+import { styleVar } from "../../utils/style/styleVariables";
 import calorieIcon from "../../assets/icon-calorie.png";
 import carbohydrateIcon from "../../assets/icon-carbohydrate.png";
 import lipidIcon from "../../assets/icon-lipid.png";
