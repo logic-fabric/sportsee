@@ -1,3 +1,8 @@
+/**
+ * Format an integer with the french dot separator grouping digits by 3.
+ * @param {number} value 
+ * @returns {string}
+ */
 export function toFrenchIntegerFormat(value) {
   value = value.toString();
 

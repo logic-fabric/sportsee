@@ -15,6 +15,9 @@ const ACTIVITY_BY_KIND = {
 };
 
 export class MockedAPI {
+  /**
+   * @returns {array.Object}
+   */
   get defaultActivities() {
     const activities = [];
 
@@ -28,6 +31,9 @@ export class MockedAPI {
     return activities;
   }
 
+  /**
+   * @returns {array.Object}
+   */
   get defaultAverageSessions() {
     const averageSessions = [
       {
@@ -63,6 +69,9 @@ export class MockedAPI {
     return averageSessions;
   }
 
+  /**
+   * @returns {array.Object}
+   */
   get defaultDailyActivity() {
     const dailyActivity = [];
 
@@ -86,6 +95,9 @@ export class MockedAPI {
     return dailyActivity;
   }
 
+  /**
+   * @returns {Object}
+   */
   get defaultKeyData() {
     return {
       calorieCount: null,
@@ -95,6 +107,10 @@ export class MockedAPI {
     };
   }
 
+  /**
+   * @param {number} userId
+   * @returns {array.Object}
+   */
   getActivitiesById(userId) {
     const activities = [];
 
@@ -114,6 +130,10 @@ export class MockedAPI {
     return this.defaultActivities;
   }
 
+  /**
+   * @param {number} userId
+   * @returns {array.Object}
+   */
   getAverageSessionsById(userId) {
     const averageSessions = [
       {
@@ -158,6 +178,10 @@ export class MockedAPI {
     return averageSessions;
   }
 
+  /**
+   * @param {number}} userId
+   * @returns {array.Object}
+   */
   getDailyActivityById(userId) {
     const dailyActivity = [];
 
@@ -181,6 +205,10 @@ export class MockedAPI {
     return this.defaultDailyActivity;
   }
 
+  /**
+   * @param {number} userId
+   * @returns {string}
+   */
   getFirstNameById(userId) {
     for (let user of USER_MAIN_DATA) {
       if (user.id === userId) {
@@ -191,6 +219,10 @@ export class MockedAPI {
     return "Unknown User";
   }
 
+  /**
+   * @param {number} userId
+   * @returns {Object}
+   */
   getKeyDataById(userId) {
     for (let user of USER_MAIN_DATA) {
       if (user.id === userId) {
@@ -201,6 +233,10 @@ export class MockedAPI {
     return this.defaultKeyData;
   }
 
+  /**
+   * @param {number} userId
+   * @returns {number}
+   */
   getTodayScoreById(userId) {
     for (let user of USER_MAIN_DATA) {
       if (user.id === userId) {
