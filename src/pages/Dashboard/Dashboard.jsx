@@ -49,9 +49,14 @@ export function Dashboard() {
             Bonjour <FirstName>{!isLoading && userFirstName}</FirstName>
           </MainTitle>
           <Message>
-            {isLoading || userFirstName === "unknown user"
-              ? ""
-              : "Félicitations ! Vous avez explosé vos objectifs hier !"}
+            {isLoading || userFirstName === "unknown user" ? (
+              ""
+            ) : (
+              <span>
+                Félicitations ! Vous avez explosé vos objectifs hier
+                !&nbsp;👏
+              </span>
+            )}
           </Message>
 
           <ContentGrid>
