@@ -11,6 +11,12 @@ const ACTIVITY_BY_KIND = {
   6: "Intensité",
 };
 
+/**
+ * Hook used to extract data from SportSeeAPI to feed the dashboard.
+ * @param {string} endpoint
+ * @param {string} service
+ * @returns {undefined|Object}
+ */
 export function useSportSeeApi(endpoint, service) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -45,14 +51,15 @@ export function useSportSeeApi(endpoint, service) {
   return { data, isLoading, error };
 }
 
+/**
+ * Factory appealing specialized functions to extract data for each service.
+ * @param {string|Object} data
+ * @param {string} service
+ * @returns {undefined|string|number|Object|array.Object}
+ */
 function extractDataByService(data, service) {
   if (data) {
     switch (service) {
-      case "firstName":
-        return data === "can not get user"
-          ? "unknown user"
-          : data.data.userInfos.firstName;
-
       case "activities":
         return getActivities(data.data.data);
 
@@ -60,24 +67,32 @@ function extractDataByService(data, service) {
         return getAverageSessions(data.data.sessions);
 
       case "daily-activity":
-        return getDailyActivity(data.data);
+        return getDailyActivity(data.data.sessions);
+
+      case "firstName":
+        return getFirstName(data);
 
       case "key-data":
-        return data === "can not get user"
-          ? getDefaultKeyData()
-          : data.data.keyData;
+        return getKeyData(data);
 
       case "today-score":
-        return data === "can not get user" ? 0 : data.data.todayScore;
+        return getTodayScore(data);
 
       default:
-        return "DEFAULT EXTRACTION";
+        console.error(
+          `extractDataByService error: service "${service}" is not defined.`
+        );
+        return;
     }
   }
 
-  return null;
+  console.error("extractDataByService error: no data to process.");
+  return;
 }
 
+/**
+ * @returns {array.Object} default data for ActivitiesChart
+ */
 export function getDefaultActivities() {
   const activities = [];
 
@@ -91,6 +106,10 @@ export function getDefaultActivities() {
   return activities;
 }
 
+/**
+ * @param {array.Object} userData
+ * @returns {array.Object} data for ActivitiesChart
+ */
 function getActivities(userData) {
   const activities = [];
 
@@ -108,6 +127,9 @@ function getActivities(userData) {
   return getDefaultActivities();
 }
 
+/**
+ * @returns {array.Object} default data for AverageSessionsChart
+ */
 export function getDefaultAverageSessions() {
   const averageSessions = [
     {
@@ -143,6 +165,10 @@ export function getDefaultAverageSessions() {
   return averageSessions;
 }
 
+/**
+ * @param {array.Object} userData
+ * @returns {array.Object} data for AverageSessionsChart
+ */
 function getAverageSessions(userData) {
   let averageSessions = getDefaultAverageSessions();
 
@@ -153,6 +179,10 @@ function getAverageSessions(userData) {
   return averageSessions;
 }
 
+/**
+ * Build an array with the dates of the 7 previous days.
+ * @returns {array.Object} default data for DailyActivityChart
+ */
 export function getDefaultDailyActivity() {
   const dailyActivity = [];
 
@@ -176,11 +206,15 @@ export function getDefaultDailyActivity() {
   return dailyActivity;
 }
 
+/**
+ * @param {array.Object} userData
+ * @returns {array.Object} data for DailyActivityChart
+ */
 function getDailyActivity(userData) {
   if (userData) {
     const dailyActivity = [];
 
-    for (let item of userData.sessions) {
+    for (let item of userData) {
       // eslint-disable-next-line no-unused-vars
       const [yyyy, mm, dd] = item.day.split("-");
 
@@ -197,6 +231,19 @@ function getDailyActivity(userData) {
   return getDefaultDailyActivity();
 }
 
+/**
+ * @param {string} userData
+ * @returns {string} user first name
+ */
+function getFirstName(userData) {
+  return userData === "can not get user"
+    ? "unknown user"
+    : userData.data.userInfos.firstName;
+}
+
+/**
+ * @returns {Object} default data for InfoCardsGroup
+ */
 export function getDefaultKeyData() {
   return {
     calorieCount: 0,
@@ -204,4 +251,22 @@ export function getDefaultKeyData() {
     carbohydrateCount: 0,
     lipidCount: 0,
   };
+}
+
+/**
+ * @param {(string|Object)} userData
+ * @returns {Object} data for InfoCardsGroup
+ */
+function getKeyData(userData) {
+  return userData === "can not get user"
+    ? getDefaultKeyData()
+    : userData.data.keyData;
+}
+
+/**
+ * @param {(string|Object)} userData
+ * @returns data for ScoreChart
+ */
+function getTodayScore(userData) {
+  return userData === "can not get user" ? 0 : userData.data.todayScore;
 }
