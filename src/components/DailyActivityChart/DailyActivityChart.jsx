@@ -18,10 +18,7 @@ import {
 import { styleVar } from "../../utils/style/styleVariables";
 
 export function DailyActivityChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeApi(
-    `user/${userId}/activity`,
-    "daily-activity"
-  );
+  const { data, isLoading, error } = useSportSeeApi("daily-activity", userId);
 
   let dailyActivity = data;
 

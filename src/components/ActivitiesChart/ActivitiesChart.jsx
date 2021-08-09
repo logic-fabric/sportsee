@@ -25,10 +25,7 @@ const ACTIVITIES_ORDER_IN_CHART = [
 ];
 
 export function ActivitiesChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeApi(
-    `user/${userId}/performance`,
-    "activities"
-  );
+  const { data, isLoading, error } = useSportSeeApi("activities", userId);
 
   let activities = data;
 

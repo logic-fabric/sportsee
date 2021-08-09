@@ -9,10 +9,7 @@ import {
 } from "../../services/hooks/useSportSeeAPI";
 
 export function InfoCardsGroup({ userId }) {
-  const { data, isLoading, error } = useSportSeeApi(
-    `user/${userId}`,
-    "key-data"
-  );
+  const { data, isLoading, error } = useSportSeeApi("key-data", userId);
 
   let keyData = data;
 

@@ -13,14 +13,16 @@ const ACTIVITY_BY_KIND = {
 
 /**
  * Hook used to extract data from SportSeeAPI to feed the dashboard.
- * @param {string} endpoint
  * @param {string} service
+ * @param {string} userId
  * @returns {undefined|Object}
  */
-export function useSportSeeApi(endpoint, service) {
+export function useSportSeeApi(service, userId) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const endpoint = getEndpointByService(service, userId);
 
   useEffect(() => {
     if (!endpoint) return;
@@ -46,9 +48,39 @@ export function useSportSeeApi(endpoint, service) {
     }
 
     fetchData();
-  }, [endpoint, service]);
+  }, [service, userId, endpoint]);
 
   return { data, isLoading, error };
+}
+
+/**
+ * @param {string} service 
+ * @param {string} userId 
+ * @returns {string} endpoint associated to the service and id
+ */
+function getEndpointByService(service, userId) {
+  switch (service) {
+    case "activities":
+      return `user/${userId}/performance`;
+
+    case "average-sessions":
+      return `user/${userId}/average-sessions`;
+
+    case "daily-activity":
+      return `user/${userId}/activity`;
+
+    case "firstName":
+      return `user/${userId}`;
+
+    case "key-data":
+      return `user/${userId}`;
+
+    case "today-score":
+      return `user/${userId}`;
+
+    default:
+      return null;
+  }
 }
 
 /**

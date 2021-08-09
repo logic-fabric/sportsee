@@ -7,10 +7,7 @@ import { useSportSeeApi } from "../../services/hooks/useSportSeeAPI";
 import { styleVar } from "../../utils/style/styleVariables";
 
 export function ScoreChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeApi(
-    `user/${userId}`,
-    "today-score"
-  );
+  const { data, isLoading, error } = useSportSeeApi("today-score", userId);
 
   let score = data;
 

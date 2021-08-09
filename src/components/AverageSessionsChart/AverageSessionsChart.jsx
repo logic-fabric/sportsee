@@ -17,10 +17,7 @@ import {
 import { styleVar } from "../../utils/style/styleVariables";
 
 export function AverageSessionsChart({ userId }) {
-  const { data, isLoading, error } = useSportSeeApi(
-    `user/${userId}/average-sessions`,
-    "average-sessions"
-  );
+  const { data, isLoading, error } = useSportSeeApi("average-sessions", userId);
 
   let averageSessions = data;
 
