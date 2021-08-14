@@ -2,7 +2,7 @@ export const USER_MAIN_DATA = [
   {
     id: 12,
     userInfos: {
-      firstName: "MockedKarl",
+      firstName: "Karl",
       lastName: "Dovineau",
       age: 31,
     },
@@ -17,7 +17,7 @@ export const USER_MAIN_DATA = [
   {
     id: 18,
     userInfos: {
-      firstName: "MockedCecilia",
+      firstName: "Cecilia",
       lastName: "Ratorez",
       age: 34,
     },
