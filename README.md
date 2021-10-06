@@ -1,5 +1,7 @@
 # SportSee - Juillet 2021
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/bc73e681d0ed4af7a521258d88236e8e)](https://www.codacy.com/gh/logic-fabric/sportsee/dashboard?utm_source=github.com&utm_medium=referral&utm_content=logic-fabric/sportsee&utm_campaign=Badge_Grade)
+
 Code source du **Projet 12** - **_Développez un tableau de bord d'analytics avec React_** du parcours **Développeur Front-end** d'_OpenClassrooms_.
 
 ## Page de démonstration
@@ -47,7 +49,7 @@ Le _front-end_ est alors consultable à l'URL `http://localhost:3001`.
 
 ### N.B. :
 
-- l'API de _SportSee_  ne fournit des données que pour les utilisateurs d'id 12 et 18.
+- l'API de _SportSee_ ne fournit des données que pour les utilisateurs d'id 12 et 18.
 - l'utilisateur 18 a un rendu alternatif du diagramme "Durée moyenne des sessions", plus pertinent que celui de la [maquette Figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR).
 
 ## Installation (_english version_)
