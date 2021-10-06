@@ -4,6 +4,7 @@ Code source du **Projet 12** - **_Développez un tableau de bord d'analytics ave
 
 ## Page de démonstration
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eff99f6e3a7949c8a54cf5c08e1c4e28)](https://app.codacy.com/gh/logic-fabric/sportsee?utm_source=github.com&utm_medium=referral&utm_content=logic-fabric/sportsee&utm_campaign=Badge_Grade_Settings)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/375faf60-fb45-40de-a189-aebe05883830/deploy-status)](https://app.netlify.com/sites/hopeful-mcclintock-f9bb9e/deploys)
 
 Un rendu statique de ce code, s'appuyant sur une _mocked_ API (branche `mocked-api-version`), est accessible via un [déploiement Netlify](https://hopeful-mcclintock-f9bb9e.netlify.app/).
